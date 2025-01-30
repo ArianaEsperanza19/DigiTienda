@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/mispedidos.css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Mis pedidos</h1>
+        <table border='1'>
+            <tr>
+                <th>N°Pedido</th>
+                <th>Coste</th>
+                <th>Fecha</th>
+            </tr>
+            <?php
+
+            $pedidos = $_SESSION['pedidos'];
+            foreach ($pedidos as $pedido) {
+                $id = $pedido['id'];
+                $coste = $pedido['coste'];
+                $fecha = $pedido['fecha'];
+                echo "
+                <tr>
+                <td><a href='index.php?controller=Pedidos&action=detalles&id=$id'>$id</a></td>
+                <td>$coste$</td>
+                <td>$fecha</td>
+        </tr>";
+            }
+
+
+            ?>
+        </table>
+    </div>
+</body>
+
+</html>

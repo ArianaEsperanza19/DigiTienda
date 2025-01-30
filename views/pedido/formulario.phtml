@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<?php
+require_once "models/utiles/verificarIdentidad.php";
+$centinela = verificarIdentidad::verificar();
+
+if ($centinela && isset($_SESSION["carrito"])): ?>
+    <html>
+
+    <head>
+        <link rel="stylesheet" href="assets/css/formulario_registro_pedido.css" />
+    </head>
+
+    <body>
+        <div class="form-container">
+            <h1>Formulario de pedidos</h1>
+            <form action="index.php?controller=Pedidos&action=guardar" method="post">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad" required>
+                <label for="direccion">Direccion:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                </select>
+                <input type="submit" value="Confirmar Pedido">
+                <a class='button' href="http://localhost/GitHub/Proyectitos/index.php?controller=Carrito&action=ver">Volver
+                    a carrito</a>
+            </form>
+        </div>
+    </body>
+
+    </html>
+    <?php
+else:
+    echo "<h1>Favor iniciar sesion para tener acceso.</h1>";
+endif; ?>

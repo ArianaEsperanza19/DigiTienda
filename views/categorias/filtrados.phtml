@@ -1,0 +1,23 @@
+<h1>Productos Filtrados para <?= $nombre ?></h1>
+<?php
+foreach ($datos as $productos) {
+	$id = $productos['id'];
+	$n = $productos['nombre'];
+	$p = $productos['precio'];
+	$img = $productos['imagen'];
+	$url_imagen = $_SESSION['url_img'] . $img;
+	$url_info = "?controller=Productos&action=info&producto=$id";
+	$redireccion = "<a href='$url_info'><img src='$url_imagen'/></a>";
+	$carrito = "href='?controller=Carrito&action=agregar&producto=$id'";
+	echo "
+					<div class='product'>
+						$redireccion
+						<h2>$n</h2>
+						<p>$p euros</p>
+						<a $carrito class='button'>Comprar</a>
+					</div>";
+}
+
+?>
+
+</div>

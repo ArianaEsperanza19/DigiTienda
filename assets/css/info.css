@@ -1,0 +1,39 @@
+.info{
+    display: grid;
+    grid-template-columns: 300px 200px 200px;
+    grid-template-rows: 50px 200px 200px;
+    border: solid 1px #01B1EA;
+    margin: 20px;
+    width: 750px;
+    height: 350px;
+}
+
+.columna{
+    margin: 10px;
+    width: 200px;
+}
+
+.descripcion {
+    width: 250px;
+    height: 100px;
+    margin: 20px;
+    
+}
+.img {
+    height: 200px;
+    margin-bottom: 10px;
+    float: right;
+    
+}
+.button{
+    display: block;
+    border-radius: 2px;
+    width: 50px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    background: #2979CD;
+    border: 1px solid #11608E;
+    cursor: pointer;
+}

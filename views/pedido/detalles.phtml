@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/detalles.css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Detalles</h1>
+        <table border='1'>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Unidades</th>
+                <th>Total</th>
+            </tr>
+            <?php
+
+            foreach ($productos_pedido as $datos) {
+                $id_linea = $datos['producto_id'];
+                $unidades = $datos['unidades'];
+                $p = $producto->conseguirUno($id_linea);
+                $p = $p->fetch();
+                $id_producto = $p['id'];
+                $nombre = $p['nombre'];
+                $precio = $p['precio'];
+                $imagen = $p['imagen'];
+                $total = $unidades * $precio;
+                $url_imagen = $_SESSION['url_img'] . $imagen;
+                echo "
+    <tr>
+    <td><img src='$url_imagen' class='img'></td>
+    <td>$nombre</td>
+    <td>$precio$</td>
+    <td>$unidades</td>
+    <td>$total$</td>
+</tr>";
+            }
+            ?>
+        </table>
+    </div>
+</body>
+
+</html>

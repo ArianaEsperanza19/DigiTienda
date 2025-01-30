@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/info.css" />
+</head>
+
+<body>
+    <div class="form-container">
+
+        <?php
+
+        foreach ($info as $i) {
+            $id = $i['id'];
+            $n = $i['nombre'];
+            $p = $i['precio'];
+            $d = $i['descripcion'];
+            $s = $i['stock'];
+            $c = $i['categoria_id'];
+            $img = $i['imagen'];
+            $carrito = "href='?controller=Carrito&action=agregar&producto=$id'";
+            echo "<h1>Producto #$id</h1>";
+            echo "<div class='info'>";
+            echo "<p class='columna'><strong>Nombre:</strong> $n</p>";
+            echo "<p class='columna'><strong>Precio:</strong> $p$</p>";
+
+            $categoria = $db->conseguir('categorias', 'nombre', "id=$c");
+            $categoria = $categoria->fetchColumn();
+            $db->cerrar();
+        }
+        //$direccion = "index.php?controller=Productos&action=sobreescribir&id=$id";
+        ?>
+        <p class='columna'><strong>Categoria:</strong> <?= $categoria ?></p>
+        <p class='columna'><strong>Imagen:</strong></p>
+        <img src="<?php echo $_SESSION['url_img'] . $img; ?>" class="img" '/>
+            <p></p>
+            <p class=' columna' style='margin: 20px'><strong>Descripcion:</strong></p>
+        <p class='descripcion'><?= $d ?></p>
+    </div>
+    <?php if (isset($_SESSION["login"]) == true) {
+        echo "<a class='button' $carrito>Poner en el carrito</a>";
+    } ?>
+    </div>
+</body>
+
+</html>

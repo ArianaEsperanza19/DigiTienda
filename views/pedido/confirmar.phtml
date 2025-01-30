@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="assets/css/confirmar.css" />
+</head>
+<html>
+
+<body>
+    <?php
+    if (isset($_SESSION['pedido']) && $_SESSION['pedido'] == "completado"):
+        echo "
+    <div class='form-container'>
+        <h1>Tu pedido se ha confirmado</h1>
+        <p>Tu pedido ha sido guardado con exito, una vez realices la transferencia bancaria a la 
+        cuenta XXXX-XXXX-XXXX-XXXX, tu paquete sera procesado y enviado.</p>
+        <h3>Datos del pedido:</h3>";
+
+        echo "
+        
+        <p>Numero del pedido: $id</p>
+        <p>Total a pagar: $coste$</p>
+        ";
+
+
+        echo "<ul><h3>Productos:</h3>";
+
+        foreach ($productos as $producto) {
+            $producto_id = $producto['producto_id'];
+            $unidades = $producto['unidades'];
+            $condicion = "id=$producto_id";
+            $nombre = $db->conseguir('productos', 'nombre', $condicion);
+            $nombre = $nombre->fetch();
+            $nombre = $nombre['nombre'];
+            echo "<li>$nombre x$unidades</li>";
+        }
+
+        echo "</ul></div>";
+
+
+    else:
+        echo "<h1>Tu pedido NO se ha confirmado</h1>";
+    endif;
+    $db->cerrar();
+    ?>
+
+
+</body>
+
+</html>

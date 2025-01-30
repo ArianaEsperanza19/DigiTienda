@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/css/detalles.css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Detalles</h1>
+        <table border='1'>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Provincia</th>
+                <th>Ciudad</th>
+                <th>Direccion</th>
+                <th>Coste</th>
+                <th>Fecha</th>
+                <th>Unidades</th>
+                <th>Status</th>
+                <th>Actualizar</th>
+            </tr>
+            <?php
+
+            foreach ($pedidos as $pedido) {
+                $id = $pedido['id'];
+                $usuario = $pedido['usuario_id'];
+                $provincia = $pedido['provincia'];
+                $ciudad = $pedido['ciudad'];
+                $direccion = $pedido['direccion'];
+                $coste = $pedido['coste'];
+                $fecha = $pedido['fecha'];
+                $unidades = $pedido['unidades'];
+                $status = $pedido['status'];
+                //echo "<pre>";
+                //print_r($pedido);
+                //echo "<pre>";
+            
+                echo "
+    <tr>
+    <td>$id</td>
+    <td>$usuario</td>
+    <td>$provincia</td>
+    <td>$ciudad</td>
+    <td>$direccion</td>
+    <td>$coste$</td>
+    <td>$fecha</td>
+    <td>$unidades</td>
+    ";
+
+                if ($status == 0) {
+                    echo "<td>
+                    <form method='POST' id='estado' action='index.php?controller=Pedidos&action=actualizar&id=$id'>
+                    <select name='estado' id='estado'>
+                    <option value='0' selected>Confirmado</option>
+                    <option value='1'>Abortado</option>
+                    <option value='2'>Terminado</option>
+                    </select>
+                </form></td>";
+
+                } else {
+                    //Por programar los demas casos
+                    if ($status == 1) {
+                        echo "<td>
+                    <form id='estado' method='POST' action='index.php?controller=Pedidos&action=actualizar&id=$id'>
+                    <select name='estado' id='estado'>
+                    <option value='0'>Confirmado</option>
+                    <option value='1' selected>Abortado</option>
+                    <option value='2'>Terminado</option>
+                    </select>
+                </form></td>";
+
+                    }
+                    if ($status == 2) {
+                        echo "<td>
+                    <form id='estado' method='POST' action='index.php?controller=Pedidos&action=actualizar&id=$id'>
+                    <select name='estado' id='estado'>
+                    <option value='0'>Confirmado</option>
+                    <option value='1'>Abortado</option>
+                    <option value='2' selected>Terminado</option>
+                    </select>
+                </form></td>";
+                    }
+                }
+
+                echo "<td><input type='submit' value='Cambiar' form='estado'/></td></tr>";
+            }
+            ?>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+A veces hay errores sin sentido en el software cuando recien ha sido 
+descargado, simplemente borra la parte que da error, guarda, revierte 
+el proceso y vuelve a intentar.
